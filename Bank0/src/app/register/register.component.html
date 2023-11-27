@@ -1,0 +1,41 @@
+<div class="w-50 p-5 text-center">
+    <h1 class="text-center  p-5 " style="color:rgb(90,56,131);margin-top: 1px"><u>Sign upaa</u> </h1>
+    <form  [formGroup]=" registerForm"  style="background-color: rgba(101,65,126,0.385);border-radius: 20px; margin-top: -31px;"action=" " class=" container p-3  text-center border" >
+        <div class="p-2 " style="margin-top:1px">
+           
+            <input formControlName ="acno"  placeholder="acno"  id="a1" name="acno" style="border:none;" class="form-control mt-2 p-2" type="text" >
+          </div>
+          <!-- changing html content based on a d^n -->
+          <div *ngIf="(this.registerForm.get('acno')?.errors)&&(this.registerForm.get('acno')?.touched)">
+            <p class="text-danger">must contain nos only</p>
+          </div>
+        <div class="p-2 mt-2">
+           
+          <input formControlName ="uname"   placeholder="uname"  id="u1" name="uname" style="border:none;" class="form-control mt-2 p-2" type="text" >
+        </div>
+        <div *ngIf="(this.registerForm.get('uname')?.errors)&&(this.registerForm.get('uname')?.touched)">
+          <p class="text-danger">must contain chars only</p>
+        </div> 
+        <div class="p-2 mt-2">
+            <input formControlName ="psw" id="p1" name="password"  class="form-control mt-2 p-2" type="password" placeholder="enter password">
+        </div>
+         <div *ngIf="(this.registerForm.get('psw')?.errors)&&(this.registerForm.get('psw')?.touched)">
+          <p class="text-danger">must contain chars and nos only</p>
+        </div> 
+         <div class="p-2 mt-2"> 
+          <!-- <input [(ngModel)]="psw" id="p1" name="password"  class="form-control mt-2 p-2" type="password" placeholder="enter password"> -->
+          <input formControlName ="cpsw" placeholder="confirm password"  id="p2" name="acno" style="border:none;" class="form-control mt-2 p-2" type="password" >
+        </div> 
+        <!-- <div *ngIf="(this.registerForm.get('cpsw')?.errors)&&(this.registerForm.get('cpsw')?.touched)">
+          <p class="text-danger">must contain chars and nos only</p>
+        </div> -->
+         <div *ngIf="pswCheck">
+          <p class ="text-danger">password doesn't match</p>
+         </div> 
+         <!-- <div *ngIf="pswCheck">
+          <p class ="text-danger">password doesn't match</p>
+         </div> -->
+        <button (click) ="register()" type="submit" class="btn btn-info mt-4 p-2">sign up</button>
+       
+</form>
+</div>

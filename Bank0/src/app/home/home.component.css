@@ -1,0 +1,51 @@
+/* .s1{
+    color:green;
+}
+.s2{
+    color:red
+}
+.c{
+    color: #8a2be2;
+    /* animation:  anim 1s ease-in 1s 5 ;  */
+/* } */
+/* .c1{ */
+    /* animation:  anim 1s ease-in 1s 5  ;  */
+    /* transition:1s ; */
+/* } */
+/* .c1:hover{ */
+    /* animation-play-state: paused; */
+/* } */
+#b{ 
+
+    color:red; 
+     /* animation: anim 1s ease-in 1s 5  ;   */
+ }
+ #b:hover{
+    color:greenyellow;
+    background-color: blueviolet;
+    animation-play-state: paused;
+}
+/* p:hover{
+    display: none;
+} */
+/* span{
+    color:blue
+} */ 
+
+/* @keyframes anim{
+    0%{ */
+/* width:50px; */
+/* background-color: #8a2be2;
+transform: rotate(45deg);  */
+    /* }
+    50%{ */
+       /* width:150px; */
+       /* background-color: yellowgreen;
+        transform: rotate(180deg);  */
+    /* } */
+    /* 100%{ */
+         /* width:80px; */
+         /* background-color: yellowgreen; */
+          /* transform: rotate(360deg);  */ 
+    /* } */
+/* } */

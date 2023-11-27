@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<style>
+  /* button{
+    color:beige;
+    transition:1s ease-in;
+  
+  } */
+  /* button:hover{
+ 
+    /* transform:scale(1.5); */
+    /* transform: scale(1.5)rotate(30deg); */
+    
+
+</style>
+<body>
+  <div  class =" c row mt-3 ms-5 mt-5">
+    <div class=" c1 col-6 p-3 twxt-center" style="background-color: none">
+        <h1>Welcome <span>{{user}}</span></h1>
+        <p>From the following options,please select one</p>
+        <img id ="i1" style="height: 500px;" src="https://i.postimg.cc/SN5TynP5/bank-office-building-is-blue-icon-on-transparent-background-3d-rendering-png.webp">
+    </div>
+
+    <div class="col-6">
+        <ul class="list-group">
+            <li [ngClass]="Dacno?'cc':''"  class="list-group-item border border-0 mb-5">
+              <button id="b" (click)="getBalance()" class="btn btn-primary w-75 btn-lg" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Balance Enquiry</button>
+      
+            </li>
+            <li [ngClass]="Dacno?'cc':''" class="list-group-item border border-0 mb-5">
+              <button id="b" (click)="acView()" type="button" class="btn btn-primary btn-lg w-75 modal-dialog-centred modal-dialog-scrollable " data-bs-toggle="modal" 
+                data-bs-target="#exampleModal">View account details</button>
+      
+            </li>
+            <li [ngClass]="Dacno?'cc':''" class="list-group-item border border-0 mb-5">
+              <button id="b" type="button" class="btn btn-primary w-75 btn-lg"data-bs-toggle="modal" data-bs-target="#exampleModal1">Send Money </button>
+            
+            </li>
+            <li [ngClass]="Dacno?'cc':''" class="list-group-item border border-0 mb-5">
+              <a href="/transaction">
+                <button id="b" type="button" class="btn btn-primary w-75 btn-lg">Account Statement </button>
+              </a>
+              
+      
+            </li>
+            <li [ngClass]="Dacno?'cc':''" class="list-group-item border border-0 mb-5">
+              <button id="b" type="button" class="btn btn-primary w-75 btn-lg" (click)="deleteClick()">
+                Delete Account</button>
+            </li>
+          
+            <p><app-delete (onDelete)="yesDelete($event)"  (onCancel)="NoDelete()" [childAcno]="Dacno"></app-delete></p>
+            
+            <!-- <li [ngClass]="Dacno?'cc':''" class="list-group-item border border-0 mb-5">
+
+              <div class=" fixed-bottom text-end mb-5 pb-5">
+                <button (click)="logout()" class="btn btn-warning btn-lg">logout</button>
+              </div> 
+
+            </li> -->
+           
+ </ul>
+
+
+      <!-- ba enquiry -->
+      <div style="background-color: rgb(83,2,83); color:white" class="offcanvas offcanvas-start" tabindex="-1"
+      id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h2 class="offcanvas-title" id="offcanvasExampleLabel">Hey{{user}}!</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div>
+          <p class="p-2">Account number:{{acno}}</p>
+          <p class="mt-5 fs-5">your current account balance is<br>
+            <strong style="color:rgb(236,198,236);">{{balance}} Rs</strong>
+          </p>
+        </div>
+        <!-- <div class="dropdown mt-3">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
+        <div class="modal-content">
+         
+          <div class="modal-body">
+            <div class="text-center">
+              <img src ="https://i.postimg.cc/1zmKmdMt/3201525-200.png" alt="">
+            </div>
+            <h1 class="mt-3 text-center" style="color:blue"  >{{user}}</h1><br>
+            <h3  class="text-center">Account Number: {{acno}}</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <h1 style="color: Magneta">Money transfer</h1>
+        <form (ngSubmit)="fundTransfer()" [formGroup]="moneyTransferForm" action=" ">
+          <input formControlName ="toAcno" class ="form-control mt-5" type="text" id="f1" name="toacno" placeholder="To Account Number">
+          <div *ngIf="(this.moneyTransferForm.get('toAcno')?.errors)&&(this.moneyTransferForm.get('toAcno')?.touched)">
+            <p class="text-danger">must contain nos only</p>
+          </div> 
+          <input   formControlName ="amount" class ="form-control mt-2" type="text"  id="f2" name="amnt" placeholder="Amount">
+          <div *ngIf="(this.moneyTransferForm.get('amount')?.errors)&&(this.moneyTransferForm.get('amount')?.touched)">
+            <p class="text-danger">must contain nos only</p>
+          </div> 
+          <input formControlName ="psw" type="password" class="form-control mt-2" id="f3" name="pswd1" placeholder="password">
+          <div *ngIf="(this.moneyTransferForm.get('psw')?.errors)&&(this.moneyTransferForm.get('psw')?.touched)">
+            <p class="text-danger">must contain chars and nos only</p>
+          </div> <br>
+          <button  class="btn btn-info" type="submit">transfer</button>
+        </form>
+      </div>
+      <div class="text-center">
+        <!-- ngclass is fr adding class attribute -->
+        <p [ngClass]="tStatus?'s1':'s2'" class=" fs-4 text-center" >{{transactionStatus}}</p>
+        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+</body>
+</html>

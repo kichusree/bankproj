@@ -1,0 +1,70 @@
+
+    <div class=" text-center  row">
+        <h3 class="text-black p-3">{{data}}</h3> 
+        
+<div class ="col-6">
+  
+    <form [formGroup]=" loginForm"   style="background-color: rgba(101,65,126,0.385); border-radius: 20px;" action=" " class="container mt-2  w-75  p-3 text-center border" >
+        <h1 class="text-center  p-5  " style="color:rgb(90,56,131)">sign in</h1>
+        <div class ="mt-2 p-2 ">
+            <!-- prop binding :[prop name]="bind data" -->
+            <!-- (evname)="methodname($event)" -->
+            <!-- <input #uname (change)="unameChange($event)" id="u1" [placeholder]="plac" class="form-control container mt-2 p-2" type="text"> -->
+            <input formControlName ="acno"  [placeholder]="plac"   id="a1" name="acno" class="form-control container mt-2 p-2" type="text"> 
+            <!-- <input  [placeholder]="plac"   id="a1" name="acno" style="border:none;" class="form-control mt-2 p-2" type="text" >
+        </div> -->
+         <div *ngIf="(this.loginForm.get('acno')?.errors)&&(this.loginForm.get('acno')?.touched)">
+            <p class="text-danger">must contain nos only</p>
+          </div> 
+          </div>
+        <div class ="mt-2 p-2">
+            <input formControlName ="psw" placeholder="enter password" id="p1"  name="psw" class="form-control container mt-2 p-2" type="password"> 
+            <!-- <input (change)="unameChange($event)" id="p1" name="password" style="border:none;" class="form-control mt-2 p-2" type="password" placeholder="enter password">
+        </div> -->
+        </div>
+         <div *ngIf="(this.loginForm.get('psw')?.errors)&&(this.loginForm.get('psw')?.touched)">
+            <p class="text-danger">must contain chars and nos only</p>
+          </div> 
+        <!-- (evname)="methodname()" -->
+        <!-- <button click="login()" type="submit" class="btn btn-info mt-4 p-2">Login </button> -->
+         <!-- <button (click)="login(uname,psw)" type="submit" class="btn btn-info mt-4 p-2">Login </button>  -->
+         <!-- <div class="form-online fr mt-4"><a id="forget" data-bs-toggle="modal" data-bs-target="#exampleModal" class="font-weight-bold">Forgot password</a></div> -->
+         <button (click)="login()" type="submit" class="btn btn-info mt-4 p-2">Login </button> 
+        <p class="mt-2" style="color:rgb(250,250,250);"> 
+            doesm't have an account?
+        
+        <a style="text-decoration:none; color:white;" routerLink="register"><strong>
+            create account
+        </strong>
+        </a>
+    </p>
+     </form> 
+</div>
+    
+    <div class="col-6 bdy " style="margin-bottom:12ps">
+        <img src="https://i.postimg.cc/h4XZN8yx/bank-clipart-design-illustration-free-png.webp ">
+    </div>
+    </div>
+<!-- </div> -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content"> -->
+        <!-- <div class="modal-header">
+          <p class="model-title" id="exampleModalLabel"><span style="font-size: 25px">Forgot your password?</span><br><small class="text-danger">Please provide email we willl send reset link</small> </p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> -->
+        <!-- <div class="modal-body">
+          <div class="form-group pt-3">
+                  <div class="input-field"><span class="fa fa-user p-2"></span> <input [(ngModel)]="resetPasswordEmail" (ngModelChange)="checkValidEmail($event)"  type="text" placeholder="Email"> </div>
+          </div>
+            <small class="text-danger">*Email isrequired</small>
+      
+    
+        </div> -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send</button>
+        </div> -->
+      <!-- </div>
+    </div>
+  </div> -->
